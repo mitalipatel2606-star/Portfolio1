@@ -2,8 +2,81 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Portfolio of Mitali Patel, Computer Engineering graduate (PDPU) skilled in Java, Networking, DSA, and DevOps. Projects include EventEase, Fake News Prediction, and Inscribe." />
+  <meta name="color-scheme" content="light dark" />
+  <meta name="theme-color" content="#003366" media="(prefers-color-scheme: light)" />
+  <meta name="theme-color" content="#0b1220" media="(prefers-color-scheme: dark)" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Mitali Patel — Portfolio" />
+  <meta property="og:description" content="Computer Engineering graduate (PDPU) specializing in Java, Networking, DSA, and DevOps." />
+  <meta property="og:image" content="images.jpeg" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Mitali Patel — Portfolio" />
+  <meta name="twitter:description" content="Computer Engineering graduate (PDPU) specializing in Java, Networking, DSA, and DevOps." />
+  <meta name="twitter:image" content="images.jpeg" />
+  <link rel="icon" href="images.jpeg" />
+  <link rel="apple-touch-icon" href="images.jpeg" />
   <title>Mitali Patel — Portfolio</title>
+  <script>
+    (function() {
+      try {
+        const storedTheme = localStorage.getItem('theme');
+        const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+        const theme = storedTheme || (prefersDark ? 'dark' : 'light');
+        document.documentElement.dataset.theme = theme;
+      } catch (e) {
+        const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+        document.documentElement.dataset.theme = prefersDark ? 'dark' : 'light';
+      }
+    })();
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Mitali Patel",
+    "description": "Computer Engineering graduate (PDPU) specializing in Java, Networking, DSA, and DevOps.",
+    "url": "https://example.com/",
+    "sameAs": [
+      "https://www.linkedin.com/in/mitali-patel-172507355",
+      "https://github.com/mitalipatel2606-star",
+      "https://instagram.com/mitali.patelll"
+    ],
+    "alumniOf": {
+      "@type": "CollegeOrUniversity",
+      "name": "Pandit Deendayal Petroleum University (PDPU)"
+    }
+  }
+  </script>
   <style>
+    :root {
+      --color-bg: #f0f8ff;
+      --color-text: #333333;
+      --color-primary: #003366;
+      --color-primary-hover: #005599;
+      --color-muted: #666666;
+      --color-muted-hover: #888888;
+      --color-card-bg: #ffffff;
+      --color-surface: #e6f0ff;
+      --shadow-sm: 0 1px 3px rgba(0,0,0,0.08);
+      --shadow-md: 0 0 10px rgba(0,0,0,0.1);
+      --header-height: 64px;
+    }
+
+    [data-theme="dark"] {
+      --color-bg: #0b1220;
+      --color-text: #e6edf3;
+      --color-primary: #6aa9ff;
+      --color-primary-hover: #8ec0ff;
+      --color-muted: #a0a0a0;
+      --color-muted-hover: #b3b3b3;
+      --color-card-bg: #0f172a;
+      --color-surface: #1e293b;
+      --shadow-sm: 0 1px 3px rgba(0,0,0,0.6);
+      --shadow-md: 0 0 10px rgba(0,0,0,0.5);
+    }
+
     * {
       margin: 0;
       padding: 0;
@@ -12,54 +85,56 @@
     }
 
     body {
-      background-color: #f0f8ff;
-      color: #333;
+      background-color: var(--color-bg);
+      color: var(--color-text);
       line-height: 1.6;
       padding: 20px;
       scroll-behavior: smooth;
+      color-scheme: light dark;
     }
 
     h1, h2, h3 {
-      color: #003366;
+      color: var(--color-primary);
       text-shadow: 1px 1px 2px gray;
       margin-bottom: 15px;
     }
 
     a {
-      color: #003366;
+      color: var(--color-primary);
       text-decoration: none;
+    }
+    a:focus-visible, button:focus-visible, .btn:focus-visible {
+      outline: 3px solid var(--color-primary);
+      outline-offset: 2px;
+      border-radius: 6px;
     }
 
     .btn {
       display: inline-block;
       margin: 10px 10px 10px 0;
       padding: 10px 20px;
-      background-color: #003366;
-      color: white;
+      background-color: var(--color-primary);
+      color: #ffffff;
       border-radius: 5px;
       transition: background 0.3s;
       cursor: pointer;
     }
 
     .btn:hover {
-      background-color: #005599;
+      background-color: var(--color-primary-hover);
     }
 
-    .btn.secondary {
-      background-color: #666;
-    }
+    .btn.secondary { background-color: var(--color-muted); }
 
-    .btn.secondary:hover {
-      background-color: #888;
-    }
+    .btn.secondary:hover { background-color: var(--color-muted-hover); }
 
     .container {
       max-width: 1000px;
       margin: auto;
-      background: white;
+      background: var(--color-card-bg);
       padding: 30px;
       border-radius: 10px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      box-shadow: var(--shadow-md);
     }
 
     /* Updated profile to flex with about me side by side */
@@ -67,7 +142,7 @@
       display: flex;
       gap: 30px;
       align-items: flex-start;
-      flex-wrap: nowrap;
+      flex-wrap: wrap;
     }
 
     .left-side {
@@ -77,7 +152,7 @@
     .left-side img {
       max-width: 200px;
       border-radius: 10px;
-      border: 2px solid #444;
+      border: 2px solid var(--color-text);
       display: block;
     }
 
@@ -85,11 +160,11 @@
       margin-top: 15px;
       font-size: 18px;
       font-weight: bold;
-      color: #003366;
+      color: var(--color-primary);
     }
 
     .socials a {
-      color: #003366;
+      color: var(--color-primary);
       text-decoration: none;
       margin-right: 10px;
     }
@@ -111,9 +186,9 @@
       text-align: center;
       margin-top: 50px;
       padding: 20px;
-      color: #666;
+      color: var(--color-muted);
       font-size: 14px;
-      border-top: 1px solid #ccc;
+      border-top: 1px solid rgba(128,128,128,0.35);
     }
 
     /* Skills Card Styles */
@@ -125,7 +200,7 @@
     }
 
     .skill-card {
-      background-color: #e6f0ff;
+      background-color: var(--color-surface);
       padding: 20px;
       border-radius: 8px;
       box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
@@ -153,7 +228,7 @@
 
     .skill-level-fill {
       height: 100%;
-      background-color: #003366;
+      background-color: var(--color-primary);
       width: 0;
       border-radius: 10px;
       transition: width 2s ease;
@@ -175,19 +250,62 @@
       margin-bottom: 10px;
     }
 
+    html { scroll-padding-top: calc(var(--header-height) + 16px); }
+
+    /* Header / Navigation */
+    .site-header { position: sticky; top: 0; z-index: 1000; background: var(--color-card-bg); box-shadow: var(--shadow-sm); margin-bottom: 16px; }
+    .header-inner { max-width: 1000px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; padding: 10px 20px; min-height: var(--header-height); gap: 12px; }
+    .brand { font-weight: bold; color: var(--color-primary); font-size: 18px; }
+    nav[aria-label="Primary"] { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+    .nav-link { padding: 6px 10px; border-radius: 6px; }
+    .nav-link.active, .nav-link[aria-current="true"] { background: var(--color-surface); }
+    .theme-toggle { background: transparent; color: var(--color-text); border: 1px solid var(--color-muted); padding: 6px 10px; border-radius: 8px; cursor: pointer; }
+    .theme-toggle:hover { border-color: var(--color-primary); color: var(--color-primary); }
+
+    /* Skip link */
+    .skip-link { position: absolute; left: -9999px; top: auto; width: 1px; height: 1px; overflow: hidden; }
+    .skip-link:focus { left: 16px; top: 16px; width: auto; height: auto; padding: 10px 12px; background: var(--color-surface); color: var(--color-primary); border-radius: 6px; box-shadow: var(--shadow-sm); z-index: 1100; }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .header-inner { flex-direction: column; align-items: flex-start; gap: 8px; }
+      .profile { flex-direction: column; }
+      .left-side { flex: 0 0 auto; }
+      .left-side img { max-width: 160px; }
+    }
+
+    /* Reduced motion */
+    @media (prefers-reduced-motion: reduce) {
+      * { scroll-behavior: auto; }
+      .skill-level-fill { transition: none; }
+    }
   </style>
 </head>
 <body>
+  <a href="#main" class="skip-link">Skip to content</a>
+  <header class="site-header" role="banner">
+    <div class="header-inner">
+      <div class="brand">Mitali Patel</div>
+      <nav aria-label="Primary">
+        <a class="nav-link" href="#about">About</a>
+        <a class="nav-link" href="#objective">Objective</a>
+        <a class="nav-link" href="#skills">Skills</a>
+        <a class="nav-link" href="#projects">Projects</a>
+      </nav>
+      <button id="themeToggle" class="theme-toggle" aria-pressed="false" aria-label="Toggle dark mode">Toggle theme</button>
+    </div>
+  </header>
 
+  <main id="main" tabindex="-1">
   <div class="container">
     <!-- Profile Section -->
     <div class="profile">
       <div class="left-side">
-        <a href="https://www.linkedin.com/in/mitali-patel-172507355" target="_blank" rel="noopener noreferrer">
-          <img src="images.jpeg" alt="Mitali Patel LinkedIn" />
+        <a href="https://www.linkedin.com/in/mitali-patel-172507355" target="_blank" rel="me noopener noreferrer">
+          <img src="images.jpeg" alt="Mitali Patel LinkedIn" loading="lazy" decoding="async" width="200" />
         </a>
         <div class="socials">
-          Instagram: <a href="https://instagram.com/mitali.patelll" target="_blank" rel="noopener noreferrer">@mitali.patelll</a>
+          Instagram: <a href="https://instagram.com/mitali.patelll" target="_blank" rel="me noopener noreferrer">@mitali.patelll</a>
         </div>
       </div>
 
@@ -195,8 +313,8 @@
         <h1 id="greeting">Hello,</h1>
         <h2>I am Mitali Patel</h2>
         <p>I am a Computer Engineering graduate from PDPU with a passion for building software and infrastructure that scales. Skilled in Java, Networking, DSA, and DevOps. I thrive on precision, focus, and consistency in all my work.</p>
-        <a class="btn" href="https://www.linkedin.com/in/mitali-patel-172507355" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-        <a class="btn" href="https://github.com/mitalipatel2606-star" target="_blank" rel="noopener noreferrer">GitHub</a>
+        <a class="btn" href="https://www.linkedin.com/in/mitali-patel-172507355" target="_blank" rel="me noopener noreferrer">LinkedIn</a>
+        <a class="btn" href="https://github.com/mitalipatel2606-star" target="_blank" rel="me noopener noreferrer">GitHub</a>
         <a class="btn secondary" href="https://medium.com/@mitalipatel2606" target="_blank" rel="noopener noreferrer">Blog</a>
 
         <!-- About Me moved here -->
@@ -258,21 +376,22 @@
       </div>
     </section>
 
-    <footer>
+    <footer role="contentinfo">
       Powered by PDPU • © 2025 Mitali Patel
     </footer>
   </div>
+  </main>
 
   <!-- JavaScript -->
   <script>
     // Dynamic greeting based on time of day
     const greetingEl = document.getElementById('greeting');
     const hour = new Date().getHours();
-    if(hour >= 5 && hour < 12) {
+    if (hour >= 5 && hour < 12) {
       greetingEl.textContent = 'Good Morning,';
-    } else if(hour >= 12 && hour < 17) {
+    } else if (hour >= 12 && hour < 17) {
       greetingEl.textContent = 'Good Afternoon,';
-    } else if(hour >= 17 && hour < 21) {
+    } else if (hour >= 17 && hour < 21) {
       greetingEl.textContent = 'Good Evening,';
     } else {
       greetingEl.textContent = 'Hello,';
@@ -295,6 +414,8 @@
       const name = document.createElement('div');
       name.className = 'skill-name';
       name.textContent = skill.name;
+      const nameId = 'skill-' + skill.name.toLowerCase().replace(/[^a-z0-9]+/g, '-');
+      name.id = nameId;
 
       const barContainer = document.createElement('div');
       barContainer.className = 'skill-level-bar';
@@ -302,6 +423,12 @@
       const barFill = document.createElement('div');
       barFill.className = 'skill-level-fill';
       barFill.style.width = '0'; // Start at zero for animation
+      barFill.setAttribute('role', 'progressbar');
+      barFill.setAttribute('aria-valuemin', '0');
+      barFill.setAttribute('aria-valuemax', '100');
+      barFill.setAttribute('aria-valuenow', '0');
+      barFill.setAttribute('aria-labelledby', nameId);
+      barFill.setAttribute('aria-valuetext', skill.levelText);
 
       barContainer.appendChild(barFill);
 
@@ -319,8 +446,63 @@
       // Animate bar fill after a short delay for each skill
       setTimeout(() => {
         barFill.style.width = skill.levelPercent + '%';
+        barFill.setAttribute('aria-valuenow', String(skill.levelPercent));
       }, 200);
     });
+
+    // Theme toggle with persistence
+    const themeButton = document.getElementById('themeToggle');
+    function applyTheme(theme) {
+      document.documentElement.dataset.theme = theme;
+      try { localStorage.setItem('theme', theme); } catch (_) {}
+      if (themeButton) {
+        const isDark = theme === 'dark';
+        themeButton.setAttribute('aria-pressed', String(isDark));
+        themeButton.textContent = isDark ? 'Light mode' : 'Dark mode';
+        themeButton.title = isDark ? 'Switch to light mode' : 'Switch to dark mode';
+      }
+    }
+    if (themeButton) {
+      applyTheme(document.documentElement.dataset.theme || 'light');
+      themeButton.addEventListener('click', () => {
+        const next = (document.documentElement.dataset.theme === 'dark') ? 'light' : 'dark';
+        applyTheme(next);
+      });
+    }
+
+    // Active nav link on scroll
+    const navLinks = Array.from(document.querySelectorAll('nav[aria-label="Primary"] .nav-link'));
+    const sections = navLinks
+      .map(link => document.querySelector(link.getAttribute('href')))
+      .filter(Boolean);
+
+    function setActive(id) {
+      navLinks.forEach(link => {
+        const match = link.getAttribute('href') === '#' + id;
+        link.classList.toggle('active', match);
+        if (match) { link.setAttribute('aria-current', 'true'); } else { link.removeAttribute('aria-current'); }
+      });
+    }
+
+    if ('IntersectionObserver' in window && sections.length) {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) setActive(entry.target.id);
+        });
+      }, { root: null, threshold: 0.5 });
+      sections.forEach(section => observer.observe(section));
+    }
+
+    window.addEventListener('hashchange', () => {
+      const id = location.hash.replace('#', '');
+      if (id) setActive(id);
+    });
+
+    // Initial active state
+    setTimeout(() => {
+      const initial = location.hash.replace('#', '') || (sections[0] && sections[0].id);
+      if (initial) setActive(initial);
+    }, 0);
   </script>
 
 </body>
